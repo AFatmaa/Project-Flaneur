@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # Database Service (PostgreSQL)
+  db:
+    image: postgres:15-alpine
+    container_name: flaneur_db
+    restart: always
+    environment:
+      POSTGRES_USER: flaneur_user
+      POSTGRES_PASSWORD: flaneur_password
+      POSTGRES_DB: flaneur_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+# Persistent Storage
+volumes:
+  postgres_data:
